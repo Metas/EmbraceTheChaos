@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15A1776829E00F8892E /* UIKit.framework */; };
+		F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
+		F45CC15F1776829E00F8892E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15E1776829E00F8892E /* CoreGraphics.framework */; };
+		F45CC1651776829E00F8892E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F45CC1631776829E00F8892E /* InfoPlist.strings */; };
+		F45CC1671776829E00F8892E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC1661776829E00F8892E /* main.m */; };
+		F45CC16B1776829E00F8892E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC16A1776829E00F8892E /* AppDelegate.m */; };
+		F45CC16E1776829E00F8892E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45CC16C1776829E00F8892E /* MainStoryboard_iPhone.storyboard */; };
+		F45CC1711776829E00F8892E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45CC16F1776829E00F8892E /* MainStoryboard_iPad.storyboard */; };
+		F45CC1741776829E00F8892E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC1731776829E00F8892E /* FirstViewController.m */; };
+		F45CC1761776829E00F8892E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = F45CC1751776829E00F8892E /* first.png */; };
+		F45CC1781776829E00F8892E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F45CC1771776829E00F8892E /* first@2x.png */; };
+		F45CC17B1776829E00F8892E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC17A1776829E00F8892E /* SecondViewController.m */; };
+		F45CC17D1776829E00F8892E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F45CC17C1776829E00F8892E /* second.png */; };
+		F45CC17F1776829E00F8892E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F45CC17E1776829E00F8892E /* second@2x.png */; };
+		F45CC1871776829F00F8892E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC1861776829F00F8892E /* SenTestingKit.framework */; };
+		F45CC1881776829F00F8892E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15A1776829E00F8892E /* UIKit.framework */; };
+		F45CC1891776829F00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
+		F45CC1911776829F00F8892E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F45CC18F1776829F00F8892E /* InfoPlist.strings */; };
+		F45CC1941776829F00F8892E /* EmbraceTheChaosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC1931776829F00F8892E /* EmbraceTheChaosTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F45CC18A1776829F00F8892E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F45CC14D1776829D00F8892E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F45CC1551776829E00F8892E;
+			remoteInfo = EmbraceTheChaos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F45CC1561776829E00F8892E /* EmbraceTheChaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbraceTheChaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F45CC15A1776829E00F8892E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F45CC15C1776829E00F8892E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F45CC15E1776829E00F8892E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F45CC1621776829E00F8892E /* EmbraceTheChaos-Info.plist */ = {isa = PBXFileReference; path = "EmbraceTheChaos-Info.plist"; sourceTree = "<group>"; };
+		F45CC1641776829E00F8892E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F45CC1661776829E00F8892E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F45CC1681776829E00F8892E /* EmbraceTheChaos-Prefix.pch */ = {isa = PBXFileReference; path = "EmbraceTheChaos-Prefix.pch"; sourceTree = "<group>"; };
+		F45CC1691776829E00F8892E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		F45CC16A1776829E00F8892E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F45CC16D1776829E00F8892E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F45CC1701776829E00F8892E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		F45CC1721776829E00F8892E /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		F45CC1731776829E00F8892E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		F45CC1751776829E00F8892E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		F45CC1771776829E00F8892E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		F45CC1791776829E00F8892E /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		F45CC17A1776829E00F8892E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		F45CC17C1776829E00F8892E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		F45CC17E1776829E00F8892E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		F45CC1851776829E00F8892E /* EmbraceTheChaosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmbraceTheChaosTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F45CC1861776829F00F8892E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F45CC18E1776829F00F8892E /* EmbraceTheChaosTests-Info.plist */ = {isa = PBXFileReference; path = "EmbraceTheChaosTests-Info.plist"; sourceTree = "<group>"; };
+		F45CC1901776829F00F8892E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F45CC1921776829F00F8892E /* EmbraceTheChaosTests.h */ = {isa = PBXFileReference; path = EmbraceTheChaosTests.h; sourceTree = "<group>"; };
+		F45CC1931776829F00F8892E /* EmbraceTheChaosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmbraceTheChaosTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F45CC1531776829E00F8892E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */,
+				F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */,
+				F45CC15F1776829E00F8892E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45CC1811776829E00F8892E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC1871776829F00F8892E /* SenTestingKit.framework in Frameworks */,
+				F45CC1881776829F00F8892E /* UIKit.framework in Frameworks */,
+				F45CC1891776829F00F8892E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F45CC14B1776829D00F8892E = {
+			isa = PBXGroup;
+			children = (
+				F45CC1601776829E00F8892E /* EmbraceTheChaos */,
+				F45CC18C1776829F00F8892E /* EmbraceTheChaosTests */,
+				F45CC1591776829E00F8892E /* Frameworks */,
+				F45CC1571776829E00F8892E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F45CC1571776829E00F8892E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC1561776829E00F8892E /* EmbraceTheChaos.app */,
+				F45CC1851776829E00F8892E /* EmbraceTheChaosTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F45CC1591776829E00F8892E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC15A1776829E00F8892E /* UIKit.framework */,
+				F45CC15C1776829E00F8892E /* Foundation.framework */,
+				F45CC15E1776829E00F8892E /* CoreGraphics.framework */,
+				F45CC1861776829F00F8892E /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F45CC1601776829E00F8892E /* EmbraceTheChaos */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC1691776829E00F8892E /* AppDelegate.h */,
+				F45CC16A1776829E00F8892E /* AppDelegate.m */,
+				F45CC16C1776829E00F8892E /* MainStoryboard_iPhone.storyboard */,
+				F45CC16F1776829E00F8892E /* MainStoryboard_iPad.storyboard */,
+				F45CC1721776829E00F8892E /* FirstViewController.h */,
+				F45CC1731776829E00F8892E /* FirstViewController.m */,
+				F45CC1751776829E00F8892E /* first.png */,
+				F45CC1771776829E00F8892E /* first@2x.png */,
+				F45CC1791776829E00F8892E /* SecondViewController.h */,
+				F45CC17A1776829E00F8892E /* SecondViewController.m */,
+				F45CC17C1776829E00F8892E /* second.png */,
+				F45CC17E1776829E00F8892E /* second@2x.png */,
+				F45CC1611776829E00F8892E /* Supporting Files */,
+			);
+			path = EmbraceTheChaos;
+			sourceTree = "<group>";
+		};
+		F45CC1611776829E00F8892E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC1621776829E00F8892E /* EmbraceTheChaos-Info.plist */,
+				F45CC1631776829E00F8892E /* InfoPlist.strings */,
+				F45CC1661776829E00F8892E /* main.m */,
+				F45CC1681776829E00F8892E /* EmbraceTheChaos-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F45CC18C1776829F00F8892E /* EmbraceTheChaosTests */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC1921776829F00F8892E /* EmbraceTheChaosTests.h */,
+				F45CC1931776829F00F8892E /* EmbraceTheChaosTests.m */,
+				F45CC18D1776829F00F8892E /* Supporting Files */,
+			);
+			path = EmbraceTheChaosTests;
+			sourceTree = "<group>";
+		};
+		F45CC18D1776829F00F8892E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F45CC18E1776829F00F8892E /* EmbraceTheChaosTests-Info.plist */,
+				F45CC18F1776829F00F8892E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F45CC1551776829E00F8892E /* EmbraceTheChaos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45CC1971776829F00F8892E /* Build configuration list for PBXNativeTarget "EmbraceTheChaos" */;
+			buildPhases = (
+				F45CC1521776829E00F8892E /* Sources */,
+				F45CC1531776829E00F8892E /* Frameworks */,
+				F45CC1541776829E00F8892E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmbraceTheChaos;
+			productName = EmbraceTheChaos;
+			productReference = F45CC1561776829E00F8892E /* EmbraceTheChaos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F45CC1841776829E00F8892E /* EmbraceTheChaosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45CC19A1776829F00F8892E /* Build configuration list for PBXNativeTarget "EmbraceTheChaosTests" */;
+			buildPhases = (
+				F45CC1801776829E00F8892E /* Sources */,
+				F45CC1811776829E00F8892E /* Frameworks */,
+				F45CC1821776829E00F8892E /* Resources */,
+				F45CC1831776829E00F8892E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F45CC18B1776829F00F8892E /* PBXTargetDependency */,
+			);
+			name = EmbraceTheChaosTests;
+			productName = EmbraceTheChaosTests;
+			productReference = F45CC1851776829E00F8892E /* EmbraceTheChaosTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F45CC14D1776829D00F8892E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Limning Labs";
+			};
+			buildConfigurationList = F45CC1501776829D00F8892E /* Build configuration list for PBXProject "EmbraceTheChaos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F45CC14B1776829D00F8892E;
+			productRefGroup = F45CC1571776829E00F8892E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F45CC1551776829E00F8892E /* EmbraceTheChaos */,
+				F45CC1841776829E00F8892E /* EmbraceTheChaosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F45CC1541776829E00F8892E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC1651776829E00F8892E /* InfoPlist.strings in Resources */,
+				F45CC16E1776829E00F8892E /* MainStoryboard_iPhone.storyboard in Resources */,
+				F45CC1711776829E00F8892E /* MainStoryboard_iPad.storyboard in Resources */,
+				F45CC1761776829E00F8892E /* first.png in Resources */,
+				F45CC1781776829E00F8892E /* first@2x.png in Resources */,
+				F45CC17D1776829E00F8892E /* second.png in Resources */,
+				F45CC17F1776829E00F8892E /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45CC1821776829E00F8892E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC1911776829F00F8892E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F45CC1831776829E00F8892E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F45CC1521776829E00F8892E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC1671776829E00F8892E /* main.m in Sources */,
+				F45CC16B1776829E00F8892E /* AppDelegate.m in Sources */,
+				F45CC1741776829E00F8892E /* FirstViewController.m in Sources */,
+				F45CC17B1776829E00F8892E /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45CC1801776829E00F8892E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45CC1941776829F00F8892E /* EmbraceTheChaosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F45CC18B1776829F00F8892E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F45CC1551776829E00F8892E /* EmbraceTheChaos */;
+			targetProxy = F45CC18A1776829F00F8892E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F45CC1631776829E00F8892E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F45CC1641776829E00F8892E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F45CC16C1776829E00F8892E /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F45CC16D1776829E00F8892E /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		F45CC16F1776829E00F8892E /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F45CC1701776829E00F8892E /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		F45CC18F1776829F00F8892E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F45CC1901776829F00F8892E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F45CC1951776829F00F8892E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F45CC1961776829F00F8892E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F45CC1981776829F00F8892E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
+				INFOPLIST_FILE = "EmbraceTheChaos/EmbraceTheChaos-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F45CC1991776829F00F8892E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
+				INFOPLIST_FILE = "EmbraceTheChaos/EmbraceTheChaos-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F45CC19B1776829F00F8892E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EmbraceTheChaos.app/EmbraceTheChaos";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
+				INFOPLIST_FILE = "EmbraceTheChaosTests/EmbraceTheChaosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F45CC19C1776829F00F8892E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EmbraceTheChaos.app/EmbraceTheChaos";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
+				INFOPLIST_FILE = "EmbraceTheChaosTests/EmbraceTheChaosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F45CC1501776829D00F8892E /* Build configuration list for PBXProject "EmbraceTheChaos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F45CC1951776829F00F8892E /* Debug */,
+				F45CC1961776829F00F8892E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F45CC1971776829F00F8892E /* Build configuration list for PBXNativeTarget "EmbraceTheChaos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F45CC1981776829F00F8892E /* Debug */,
+				F45CC1991776829F00F8892E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F45CC19A1776829F00F8892E /* Build configuration list for PBXNativeTarget "EmbraceTheChaosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F45CC19B1776829F00F8892E /* Debug */,
+				F45CC19C1776829F00F8892E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F45CC14D1776829D00F8892E /* Project object */;
+}
