@@ -37,6 +37,7 @@
 		F445D77017800A6C006AEF30 /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = F445D75B17800A6C006AEF30 /* C.png */; };
 		F445D77117800A6C006AEF30 /* B.png in Resources */ = {isa = PBXBuildFile; fileRef = F445D75C17800A6C006AEF30 /* B.png */; };
 		F445D77217800A6C006AEF30 /* A.png in Resources */ = {isa = PBXBuildFile; fileRef = F445D75D17800A6C006AEF30 /* A.png */; };
+		F44717B417807FF7004BA19C /* DailyDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F44717B317807FF7004BA19C /* DailyDataCache.m */; };
 		F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15A1776829E00F8892E /* UIKit.framework */; };
 		F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
 		F45CC15F1776829E00F8892E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15E1776829E00F8892E /* CoreGraphics.framework */; };
@@ -58,6 +59,11 @@
 		F47BCFE4177877B200CD5949 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BCFE3177877B200CD5949 /* FavoritesViewController.m */; };
 		F47BCFE7177877C900CD5949 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BCFE6177877C800CD5949 /* InfoViewController.m */; };
 		F47BCFE91778819A00CD5949 /* embrace_the_chaos.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = F47BCFE81778819A00CD5949 /* embrace_the_chaos.sqlite3 */; };
+		F48E6B311780624800B45DE8 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = F48E6B301780624800B45DE8 /* save.png */; };
+		F48E6B341780625400B45DE8 /* NextQuote.png in Resources */ = {isa = PBXBuildFile; fileRef = F48E6B331780625400B45DE8 /* NextQuote.png */; };
+		F48E6B361780641D00B45DE8 /* Favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = F48E6B351780641D00B45DE8 /* Favorite.png */; };
+		F48E6B381780642C00B45DE8 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = F48E6B371780642C00B45DE8 /* share.png */; };
+		F48E6B3B1780650C00B45DE8 /* DailyCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E6B3A1780650C00B45DE8 /* DailyCoverView.m */; };
 		F4A8745F17768F38003F063E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A8745E17768F38003F063E /* libsqlite3.dylib */; };
 		F4A87468177692D4003F063E /* Favorite_Mdl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A87467177692D4003F063E /* Favorite_Mdl.m */; };
 		F4D95FFD177714070082A841 /* Favorite_Cntrl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D95FFC177714070082A841 /* Favorite_Cntrl.m */; };
@@ -109,6 +115,8 @@
 		F445D75B17800A6C006AEF30 /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.png; sourceTree = "<group>"; };
 		F445D75C17800A6C006AEF30 /* B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = B.png; sourceTree = "<group>"; };
 		F445D75D17800A6C006AEF30 /* A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A.png; sourceTree = "<group>"; };
+		F44717B217807FF7004BA19C /* DailyDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDataCache.h; sourceTree = "<group>"; };
+		F44717B317807FF7004BA19C /* DailyDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDataCache.m; sourceTree = "<group>"; };
 		F45CC1561776829E00F8892E /* EmbraceTheChaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbraceTheChaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45CC15A1776829E00F8892E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F45CC15C1776829E00F8892E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +147,12 @@
 		F47BCFE5177877C800CD5949 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		F47BCFE6177877C800CD5949 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		F47BCFE81778819A00CD5949 /* embrace_the_chaos.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = embrace_the_chaos.sqlite3; sourceTree = "<group>"; };
+		F48E6B301780624800B45DE8 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		F48E6B331780625400B45DE8 /* NextQuote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextQuote.png; sourceTree = "<group>"; };
+		F48E6B351780641D00B45DE8 /* Favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Favorite.png; sourceTree = "<group>"; };
+		F48E6B371780642C00B45DE8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		F48E6B391780650C00B45DE8 /* DailyCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCoverView.h; sourceTree = "<group>"; };
+		F48E6B3A1780650C00B45DE8 /* DailyCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCoverView.m; sourceTree = "<group>"; };
 		F4A8745E17768F38003F063E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F4A87466177692D4003F063E /* Favorite_Mdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite_Mdl.h; sourceTree = "<group>"; };
 		F4A87467177692D4003F063E /* Favorite_Mdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite_Mdl.m; sourceTree = "<group>"; };
@@ -258,6 +272,10 @@
 		F47BCFDB177876CF00CD5949 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F48E6B371780642C00B45DE8 /* share.png */,
+				F48E6B351780641D00B45DE8 /* Favorite.png */,
+				F48E6B331780625400B45DE8 /* NextQuote.png */,
+				F48E6B301780624800B45DE8 /* save.png */,
 				F445D74917800A6C006AEF30 /* U.png */,
 				F445D74A17800A6C006AEF30 /* T.png */,
 				F445D74B17800A6C006AEF30 /* S.png */,
@@ -302,6 +320,8 @@
 				F40BDE30177B21F500428D57 /* WebsiteViewController.m */,
 				F445D73E17800926006AEF30 /* FlowCoverView.h */,
 				F445D73F17800926006AEF30 /* FlowCoverView.m */,
+				F48E6B391780650C00B45DE8 /* DailyCoverView.h */,
+				F48E6B3A1780650C00B45DE8 /* DailyCoverView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -326,6 +346,8 @@
 				F40BDE2B177A984A00428D57 /* Info_Cntrl.m */,
 				F445D7421780098E006AEF30 /* DataCache.h */,
 				F445D7431780098E006AEF30 /* DataCache.m */,
+				F44717B217807FF7004BA19C /* DailyDataCache.h */,
+				F44717B317807FF7004BA19C /* DailyDataCache.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -430,6 +452,10 @@
 				F445D77117800A6C006AEF30 /* B.png in Resources */,
 				F445D77217800A6C006AEF30 /* A.png in Resources */,
 				F43AF73317801E160025F389 /* MainStoryboard_iPhone.storyboard in Resources */,
+				F48E6B311780624800B45DE8 /* save.png in Resources */,
+				F48E6B341780625400B45DE8 /* NextQuote.png in Resources */,
+				F48E6B361780641D00B45DE8 /* Favorite.png in Resources */,
+				F48E6B381780642C00B45DE8 /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +503,8 @@
 				F40BDE31177B21F500428D57 /* WebsiteViewController.m in Sources */,
 				F445D74017800926006AEF30 /* FlowCoverView.m in Sources */,
 				F445D7441780098E006AEF30 /* DataCache.m in Sources */,
+				F48E6B3B1780650C00B45DE8 /* DailyCoverView.m in Sources */,
+				F44717B417807FF7004BA19C /* DailyDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
