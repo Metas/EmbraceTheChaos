@@ -39,21 +39,21 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" id="NVH-td-ruU" customClass="DailyCoverView">
-                                <rect key="frame" x="20" y="10" width="280" height="339"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="kU5-UM-QHh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Daily" image="first" id="7"/>
                     <connections>
+                        <outlet property="DailyQuote" destination="kU5-UM-QHh" id="4jA-AN-p6q"/>
+                        <outlet property="DailyQuoteView" destination="kU5-UM-QHh" id="Yh8-XR-R48"/>
                         <outlet property="btnFavorite" destination="YKH-1t-9Pc" id="egO-fe-in5"/>
                         <outlet property="btnNextQuote" destination="rhl-J5-j68" id="ul4-oo-jw6"/>
                         <outlet property="btnSaveImge" destination="Uqs-Tb-ysT" id="e7A-eP-mbF"/>
                         <outlet property="btnShare" destination="Nda-dT-KCG" id="xKe-eH-Lwo"/>
-                        <outlet property="cover" destination="NVH-td-ruU" id="inp-sK-9L1"/>
                     </connections>
                 </viewController>
             </objects>
@@ -257,6 +257,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Favorites" id="jFx-lr-VHs"/>
+                    <connections>
+                        <outlet property="tableFav" destination="F0E-b8-gTd" id="2Dh-dK-JIv"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="674" y="674"/>
@@ -289,9 +292,6 @@
         <image name="share.png" width="32" height="21"/>
     </resources>
     <classes>
-        <class className="DailyCoverView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyCoverView.h"/>
-        </class>
         <class className="DailyViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyViewController.h"/>
             <relationships>
@@ -299,15 +299,18 @@
                 <relationship kind="action" name="btnNextQuote:"/>
                 <relationship kind="action" name="btnSaveImage:"/>
                 <relationship kind="action" name="btnShare:"/>
+                <relationship kind="outlet" name="DailyQuoteView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnFavorite" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="btnNextQuote" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="btnSaveImge" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="btnShare" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cover" candidateClass="DailyCoverView"/>
             </relationships>
         </class>
         <class className="FavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableFav" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="FlowCoverView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FlowCoverView.h"/>

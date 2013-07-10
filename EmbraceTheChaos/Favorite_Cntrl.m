@@ -11,6 +11,9 @@
 
 @implementation Favorite_Cntrl
 
+@synthesize homeDir;
+@synthesize fileMgr;
+
 static Favorite_Cntrl *_database;
 
 +(Favorite_Cntrl *)database
@@ -40,18 +43,65 @@ static Favorite_Cntrl *_database;
     }
     
 }
+-(NSString *) GetDocumentDirectory
+{
+    fileMgr = [NSFileManager defaultManager];
+
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    return homeDir;
+    
+}
+
 
 - (id)init 
 {
     if ((self = [super init])) 
     {
-        //NSString *sqLiteDb = [self dataFilePath:TRUE];
         
-        NSString *sqLiteDb = [[NSBundle mainBundle] pathForResource:@"embrace_the_chaos" ofType:@"sqlite3"];
         
-        if (sqlite3_open([sqLiteDb UTF8String], &_database) != SQLITE_OK) 
+        @try
         {
-            NSLog(@"Failed to open database!");
+            sqLiteDb = [self dataFilePath:TRUE];
+            NSLog(@"Database location is:%@",sqLiteDb);
+            if(sqLiteDb.length ==0)
+            {
+                //sqlite db is not found in documents directory so see the resources directory
+                NSFileManager *filemgr = [NSFileManager defaultManager];
+                sqLiteDb = [[NSBundle mainBundle] pathForResource:@"embrace_the_chaos" ofType:@"sqlite3"];
+                BOOL success =[filemgr fileExistsAtPath:sqLiteDb];
+                if(!success)
+                {
+                    NSLog(@"Cannot locate database file '%@'.",sqLiteDb);
+                }
+                if (!(sqlite3_open([sqLiteDb UTF8String], &_database) == SQLITE_OK)) 
+                {
+                    NSLog(@"Failed to open database!");
+                }
+
+            }
+            else//database is in documents directory
+            {
+                NSFileManager *filemgr = [NSFileManager defaultManager];
+                BOOL success =[filemgr fileExistsAtPath:sqLiteDb];
+                if(!success)
+                {
+                    NSLog(@"Cannot locate database file '%@'.",sqLiteDb);
+                }
+                if (!(sqlite3_open([sqLiteDb UTF8String], &_database) == SQLITE_OK)) 
+                {
+                    NSLog(@"Failed to open database!");
+                }
+
+            }
+        }
+        @catch(NSException *exc)
+        {
+            NSLog(@"An exception occured %@",[exc reason]);
+        }
+        @finally 
+        {
+            return self;
         }
     }
     return self;
@@ -67,52 +117,71 @@ static Favorite_Cntrl *_database;
 
 - (NSArray *)favouriteQuotes 
 {
-    
+    fileMgr = [NSFileManager defaultManager];
+    sqlite3_stmt *stmt=nil;
+    sqlite3 *cruddb ;
+
     NSMutableArray *retval = [[NSMutableArray alloc] init] ;
-    NSString *query = @"select a.quote_id, a.topic_id, b.topic_val, a.quote_val from tbl_quote a, tbl_topic b where a.isFav=0 and a.topic_id = b.topic_id order by a.topic_id";
-    sqlite3_stmt *statement;
     
-    if(sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil)==SQLITE_OK)
+    //select
+    NSString *query = [NSString stringWithFormat:@"select a.quote_id, a.topic_id, b.topic_val, a.quote_val from tbl_quote a, tbl_topic b where a.isFav=1 and a.topic_id = b.topic_id order by a.topic_id"];
+    NSLog(@"Query is %@",query);
+
+    //Open db
+    NSString *cruddatabase = [self.GetDocumentDirectory stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
+    if (!(sqlite3_open([cruddatabase UTF8String], &cruddb) == SQLITE_OK)) 
     {
-        while(sqlite3_step(statement)==SQLITE_ROW)
+        NSLog(@"Failed to open database!");
+    }
+    int okVal =sqlite3_prepare_v2(cruddb, [query UTF8String], -1, &stmt, nil);
+    if(okVal==SQLITE_OK)
+    {
+       
+        int value= sqlite3_step(stmt);
+        while(value==SQLITE_ROW)
         {
-            int quoteNum = sqlite3_column_int(statement,0);
-            int topicNum = sqlite3_column_int(statement,1);
-            char *topicChars = (char*)sqlite3_column_text(statement, 2);
-            char *quoteChars = (char*)sqlite3_column_text(statement, 3);
+            int quoteNum = sqlite3_column_int(stmt,0);
+            int topicNum = sqlite3_column_int(stmt,1);
+            char *topicChars = (char*)sqlite3_column_text(stmt, 2);
+            char *quoteChars = (char*)sqlite3_column_text(stmt, 3);
             NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
             NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
             Favorite_Mdl *info = [[Favorite_Mdl alloc]initWithQuoteID:quoteNum topicID:topicNum topic:topicVal quote:quoteVal];
             [retval addObject:info];
+             value= sqlite3_step(stmt);
         }
-        sqlite3_finalize(statement);
+        sqlite3_finalize(stmt);
     }
+    sqlite3_finalize(stmt);
+    sqlite3_close(cruddb);
     return retval;
     
 }
 -(void)removeFavoriteQuote:(int)quoteIdNum
 {
-
-    static sqlite3_stmt *updateStmt = nil;
-    
-    if(updateStmt == nil) 
+    fileMgr = [NSFileManager defaultManager];
+    sqlite3_stmt *stmt=nil;
+    sqlite3 *cruddb ;
+    //select
+    NSString *query = [NSString stringWithFormat:@"update tbl_quote set isFav=0 where  quote_id = %d",quoteIdNum];
+    NSLog(@"Query is %@",query);
+    //Open db
+    NSString *cruddatabase = [self.GetDocumentDirectory stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
+    if (!(sqlite3_open([cruddatabase UTF8String], &cruddb) == SQLITE_OK)) 
     {
-        NSString *query = [NSString stringWithFormat:@"update tbl_quote set isFav=1 where  quote_id = %d and isFav=0 ",quoteIdNum];
-
-        NSLog(@"%@",query);
-        sqlite3_stmt *statement;
-    
-        if(sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil)!=SQLITE_OK)
-        {
-            NSLog(@"ERROR");
-        }
-        if(SQLITE_DONE != sqlite3_step(statement))
-        {
-            NSLog(@"ERROR");
-        }
-        sqlite3_finalize(statement);
-
+        NSLog(@"Failed to open database!");
     }
+    int okVal =sqlite3_prepare_v2(cruddb, [query UTF8String], -1, &stmt, nil);
+    if(okVal==SQLITE_OK)
+    {
+        int value= sqlite3_step(stmt);
+    }
+    else
+    {
+        
+    }
+    sqlite3_finalize(stmt);
+    sqlite3_close(cruddb);
 
     
 }

@@ -12,10 +12,12 @@
 {
     NSArray *favorites;
     
+
 }
 @property(nonatomic,retain)NSArray *favorites;
 @property(nonatomic,retain) NSMutableArray *sectionKeys;
 @property(nonatomic,retain)NSMutableDictionary *sectionContents;
+@property (weak, nonatomic) IBOutlet UITableView *tableFav;
 
 -(void) getSectionAndKeyValues;
 @end

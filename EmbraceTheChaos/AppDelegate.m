@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CrudOps_Cntrl.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    //copy database from resources(which is read only to documents where you can perform writes and reads
+    CrudOps_Cntrl *dbControl = [[CrudOps_Cntrl alloc]init];
+    [dbControl CopyDbToDocumentsFolder];
     return YES;
 }
 							

@@ -12,10 +12,15 @@
 @interface Info_Cntrl : NSObject
 {
     sqlite3 * _database;
+    NSFileManager *fileMgr;
+    NSString *homeDir;
 }
+
+@property (nonatomic,retain) NSString *homeDir;
+@property (nonatomic,retain) NSFileManager *fileMgr;
 + (Info_Cntrl *) database;
 -(NSArray *)randomQuote ;
-
+-(NSString *) GetDocumentDirectory;
 //-(NSString *)dataFilePath:(BOOL)forSave ;
 //-(NSArray *) favouriteQuotes ;
 //-(void)removeFavoriteQuote:(int) quoteIdNum;

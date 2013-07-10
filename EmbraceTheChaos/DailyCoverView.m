@@ -214,6 +214,8 @@ const GLshort D_GTextures[] = {
 - (int)flowCoverNumberImages:(DailyCoverView *)view
 {
 	return 64;
+    
+    //return the number of topics
 }
 
 - (UIImage *)tileImage:(int)image

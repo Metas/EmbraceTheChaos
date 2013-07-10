@@ -12,9 +12,18 @@
 @interface Favorite_Cntrl : NSObject
 {
     sqlite3 * _database;
+    NSString *homeDir;
+    NSString *sqLiteDb ; 
+    NSFileManager *fileMgr;
 }
+
+@property (nonatomic,retain) NSFileManager *fileMgr;
+@property (nonatomic,retain) NSString *homeDir;
+
 + (Favorite_Cntrl *) database;
 -(NSString *)dataFilePath:(BOOL)forSave ;
 -(NSArray *) favouriteQuotes ;
 -(void)removeFavoriteQuote:(int) quoteIdNum;
+-(NSString *) GetDocumentDirectory;
+
 @end

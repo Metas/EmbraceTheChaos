@@ -10,7 +10,17 @@
 #import "DailyCoverView.h"
 
 @interface DailyViewController : UIViewController
-@property (weak, nonatomic) IBOutlet DailyCoverView *cover;
+{
+    NSArray *dailyQuote ;
+    NSInteger quoteNum ;
+    UIImage * picture;
+    NSMutableArray * lastQuoteNum ;
+}
+
+@property(nonatomic,retain)NSArray *dailyQuote;
+@property (weak, nonatomic) IBOutlet UIImageView *DailyQuoteView;
+
+//@property (weak, nonatomic) IBOutlet DailyCoverView *cover;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnFavorite;
 - (IBAction)btnFavAdd:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSaveImge;
@@ -19,5 +29,8 @@
 - (IBAction)btnShare:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnNextQuote;
 - (IBAction)btnNextQuote:(id)sender;
+
+-(UIImage*) drawText:(NSString*) text inImage:(UIImage*)  image ;
+
 
 @end

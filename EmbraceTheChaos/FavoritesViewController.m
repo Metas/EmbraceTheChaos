@@ -14,6 +14,7 @@
 @synthesize favorites;
 @synthesize sectionKeys;
 @synthesize sectionContents;
+@synthesize tableFav;
 
 -(id) init
 {
@@ -26,6 +27,7 @@
 }
 -(void) viewDidLoad
 {
+
     [super viewDidLoad];
     self.favorites =[Favorite_Cntrl database].favouriteQuotes;
     self.title = @"Favorites";
@@ -85,6 +87,7 @@
     }
     [self setSectionKeys:keys];
     [self setSectionContents:contents];
+        
     }
 }
 
@@ -153,11 +156,33 @@ titleForHeaderInSection:(NSInteger)section
         
         //[tableView deleteRowsAtIndexPaths:contents withRowAnimation:YES];
     }
-    [tableView reloadData];
+    self.favorites =[Favorite_Cntrl database].favouriteQuotes;
+    self.title = @"Favorites";
+
+    [self getSectionAndKeyValues];
+    [tableFav reloadData];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma View appear
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    NSLog(@"ViewDidAppear");
+    [super viewDidAppear:YES];
+    self.favorites =[Favorite_Cntrl database].favouriteQuotes;
+    self.title = @"Favorites";
+    
+    [self getSectionAndKeyValues];
+    [tableFav reloadData];
+}
+- (void)viewDidUnload {
+   
+    [self setTableFav:nil];
+    [super viewDidUnload];
 }
 @end
