@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CrudOps_Cntrl.h"
+#import <FacebookSDK/FacebookSDK.h>
+
 
 @implementation AppDelegate
 
@@ -21,7 +23,27 @@
     [dbControl CopyDbToDocumentsFolder];
     return YES;
 }
-							
+
+#pragma Facebook
+//Facebook
+- (BOOL)application:(UIApplication *)application 
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBSession.activeSession handleOpenURL:url]; 
+}
+
+
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [FBSession.activeSession close];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
@@ -52,13 +74,13 @@
      */
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+//- (void)applicationWillTerminate:(UIApplication *)application
+//{
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
-}
+//}
 
 @end

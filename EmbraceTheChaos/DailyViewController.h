@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DailyCoverView.h"
 
+#import "Share_Mdl.h"
+
 @interface DailyViewController : UIViewController
 {
     NSArray *dailyQuote ;
     NSInteger quoteNum ;
     UIImage * picture;
     NSMutableArray * lastQuoteNum ;
+    Share_Mdl *Qpicture ;
 }
 
 @property(nonatomic,retain)NSArray *dailyQuote;

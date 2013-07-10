@@ -38,6 +38,12 @@
 		F445D77117800A6C006AEF30 /* B.png in Resources */ = {isa = PBXBuildFile; fileRef = F445D75C17800A6C006AEF30 /* B.png */; };
 		F445D77217800A6C006AEF30 /* A.png in Resources */ = {isa = PBXBuildFile; fileRef = F445D75D17800A6C006AEF30 /* A.png */; };
 		F44717B417807FF7004BA19C /* DailyDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F44717B317807FF7004BA19C /* DailyDataCache.m */; };
+		F4484BA6178D8B7D00BAC560 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4484BA5178D8B7D00BAC560 /* FacebookSDK.framework */; };
+		F4484BA8178D8BCD00BAC560 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4484BA7178D8BCD00BAC560 /* Accounts.framework */; };
+		F4484BAB178D926200BAC560 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BAA178D926100BAC560 /* ShareViewController.m */; };
+		F4484BAE178D937200BAC560 /* Share_Mdl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BAD178D937200BAC560 /* Share_Mdl.m */; };
+		F4484BB1178D938E00BAC560 /* Share_Cntrl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BB0178D938E00BAC560 /* Share_Cntrl.m */; };
+		F458ABDC178DC50000874E53 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F458ABDB178DC50000874E53 /* Twitter.framework */; };
 		F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15A1776829E00F8892E /* UIKit.framework */; };
 		F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
 		F45CC15F1776829E00F8892E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15E1776829E00F8892E /* CoreGraphics.framework */; };
@@ -120,6 +126,15 @@
 		F445D75D17800A6C006AEF30 /* A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A.png; sourceTree = "<group>"; };
 		F44717B217807FF7004BA19C /* DailyDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDataCache.h; sourceTree = "<group>"; };
 		F44717B317807FF7004BA19C /* DailyDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDataCache.m; sourceTree = "<group>"; };
+		F4484BA5178D8B7D00BAC560 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		F4484BA7178D8BCD00BAC560 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F4484BA9178D926100BAC560 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		F4484BAA178D926100BAC560 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		F4484BAC178D937200BAC560 /* Share_Mdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share_Mdl.h; sourceTree = "<group>"; };
+		F4484BAD178D937200BAC560 /* Share_Mdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share_Mdl.m; sourceTree = "<group>"; };
+		F4484BAF178D938D00BAC560 /* Share_Cntrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share_Cntrl.h; sourceTree = "<group>"; };
+		F4484BB0178D938E00BAC560 /* Share_Cntrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share_Cntrl.m; sourceTree = "<group>"; };
+		F458ABDB178DC50000874E53 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		F45CC1561776829E00F8892E /* EmbraceTheChaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbraceTheChaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45CC15A1776829E00F8892E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F45CC15C1776829E00F8892E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F458ABDC178DC50000874E53 /* Twitter.framework in Frameworks */,
+				F4484BA8178D8BCD00BAC560 /* Accounts.framework in Frameworks */,
 				F445D74817800A30006AEF30 /* OpenGLES.framework in Frameworks */,
 				F445D74617800A23006AEF30 /* QuartzCore.framework in Frameworks */,
 				F40BDE2E177B1A1C00428D57 /* MessageUI.framework in Frameworks */,
@@ -181,6 +198,7 @@
 				F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */,
 				F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */,
 				F45CC15F1776829E00F8892E /* CoreGraphics.framework in Frameworks */,
+				F4484BA6178D8B7D00BAC560 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +237,9 @@
 		F45CC1591776829E00F8892E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4484BA7178D8BCD00BAC560 /* Accounts.framework */,
+				F458ABDB178DC50000874E53 /* Twitter.framework */,
+				F4484BA5178D8B7D00BAC560 /* FacebookSDK.framework */,
 				F445D74517800A23006AEF30 /* QuartzCore.framework */,
 				F445D74717800A30006AEF30 /* OpenGLES.framework */,
 				F40BDE2D177B1A1C00428D57 /* MessageUI.framework */,
@@ -331,6 +352,8 @@
 				F445D73F17800926006AEF30 /* FlowCoverView.m */,
 				F48E6B391780650C00B45DE8 /* DailyCoverView.h */,
 				F48E6B3A1780650C00B45DE8 /* DailyCoverView.m */,
+				F4484BA9178D926100BAC560 /* ShareViewController.h */,
+				F4484BAA178D926100BAC560 /* ShareViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -344,6 +367,8 @@
 				F40BDE27177A97FF00428D57 /* Info_Mdl.m */,
 				F4FB6037178BC86400D5F3AF /* Daily_Mdl.h */,
 				F4FB6038178BC86400D5F3AF /* Daily_Mdl.m */,
+				F4484BAC178D937200BAC560 /* Share_Mdl.h */,
+				F4484BAD178D937200BAC560 /* Share_Mdl.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,6 +388,8 @@
 				F4FB6035178BC78100D5F3AF /* Daily_Cntrl.m */,
 				F4FB603A178C251000D5F3AF /* CrudOps_Cntrl.h */,
 				F4FB603B178C251100D5F3AF /* CrudOps_Cntrl.m */,
+				F4484BAF178D938D00BAC560 /* Share_Cntrl.h */,
+				F4484BB0178D938E00BAC560 /* Share_Cntrl.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +448,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				he,
 			);
 			mainGroup = F45CC14B1776829D00F8892E;
 			productRefGroup = F45CC1571776829E00F8892E /* Products */;
@@ -523,6 +551,9 @@
 				F4FB6036178BC78100D5F3AF /* Daily_Cntrl.m in Sources */,
 				F4FB6039178BC86400D5F3AF /* Daily_Mdl.m in Sources */,
 				F4FB603C178C251200D5F3AF /* CrudOps_Cntrl.m in Sources */,
+				F4484BAB178D926200BAC560 /* ShareViewController.m in Sources */,
+				F4484BAE178D937200BAC560 /* Share_Mdl.m in Sources */,
+				F4484BB1178D938E00BAC560 /* Share_Cntrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,9 +653,14 @@
 		F45CC1981776829F00F8892E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
 				INFOPLIST_FILE = "EmbraceTheChaos/EmbraceTheChaos-Info.plist";
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -633,9 +669,14 @@
 		F45CC1991776829F00F8892E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmbraceTheChaos/EmbraceTheChaos-Prefix.pch";
 				INFOPLIST_FILE = "EmbraceTheChaos/EmbraceTheChaos-Info.plist";
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

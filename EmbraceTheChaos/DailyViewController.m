@@ -9,6 +9,7 @@
 #import "DailyViewController.h"
 #import "Daily_Mdl.h"
 #import "Daily_Cntrl.h"
+#import "ShareViewController.h"
 
 @implementation DailyViewController
 
@@ -189,6 +190,23 @@
 - (IBAction)btnShare:(id)sender 
 {
     //call another screen to share with facebook, twitter or email
+    NSData* imageData =  UIImagePNGRepresentation(picture);     // get png representation
+    UIImage* pngImage = [UIImage imageWithData:imageData];    // rewrap
+    Qpicture = [[Share_Mdl alloc]init];
+    Qpicture.quotePic = pngImage ;
+     [self performSegueWithIdentifier:@"Share" sender:self];
+
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier]isEqualToString:@"Share"])
+    {
+        // Get destination view
+        //ShareViewController *vc = [segue destinationViewController];
+        [(ShareViewController *)[segue destinationViewController]shareInfo:Qpicture];
+        // Pass the information to your destination view
+        //[vc shareInfo:Qpicture];
+    }
 }
 - (IBAction)btnNextQuote:(id)sender 
 {
