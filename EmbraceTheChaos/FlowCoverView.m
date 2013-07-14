@@ -10,6 +10,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "IndexViewController.h"
+#import "Index_Mdl.h"
+#import "DailyViewController.h"
+
 
 /************************************************************************/
 /*																		*/
@@ -87,7 +90,8 @@ const GLshort GTextures[] = {
 
 
 @implementation FlowCoverView
-
+@synthesize topicPictures;
+@synthesize delegate=_delegate;
 
 /************************************************************************/
 /*																		*/
@@ -99,6 +103,8 @@ const GLshort GTextures[] = {
 {
 	return [CAEAGLLayer class];
 }
+
+
 
 - (BOOL)createFrameBuffer
 {
@@ -187,7 +193,9 @@ const GLshort GTextures[] = {
 
 - (id)initWithCoder:(NSCoder *)coder 
 {
-    if (self = [super initWithCoder:coder]) {
+    self.topicPictures =[Index_Cntrl database].topicPicture;
+    if (self = [super initWithCoder:coder]) 
+    {
 		self = [self internalInit];
     }
     return self;
@@ -214,7 +222,9 @@ const GLshort GTextures[] = {
 }
 - (int)flowCoverNumberImages:(FlowCoverView *)view
 {
-	return 64;
+	//return 64;
+    int numberOfPics = topicPictures.count ;
+    return numberOfPics ;
 }
 
 - (UIImage *)tileImage:(int)image
@@ -231,26 +241,9 @@ const GLshort GTextures[] = {
 
 - (UIImage *)flowCover:(FlowCoverView *)view cover:(int)image
 {
-	switch (image % 6) {
-		case 0:
-		default:
-            return [self drawText:@"Meditation" inImage:[UIImage imageNamed:@"a.png"] ];
-			
-		case 1:
-            return [self drawText:@"Empowerment" inImage:[UIImage imageNamed:@"b.png"] ];
-
-		case 2:
-            return [self drawText:@"Leadership" inImage:[UIImage imageNamed:@"c.png"] ];
-		case 3:
-            return [self drawText:@"ONLY YOU" inImage:[UIImage imageNamed:@"s.png"] ];
-
-		case 4:
-            return [self drawText:@"HELLO" inImage:[UIImage imageNamed:@"t.png"] ];
-
-		case 5:
-            return [self drawText:@"WAIT" inImage:[UIImage imageNamed:@"u.png"] ];
-
-	}
+    Index_Mdl *mdl = [[Index_Mdl alloc]init] ;
+    mdl =[topicPictures objectAtIndex:image];
+    return mdl.pictureVal ;
 }
 
 
@@ -274,7 +267,9 @@ const GLshort GTextures[] = {
 - (void)flowCover:(FlowCoverView *)view didSelect:(int)image
 {
 	NSLog(@"Selected Index %d",image);
-    
+
+    //call delegate
+    [self.delegate rateView:self ratingDidChange:image];
 }
 
 

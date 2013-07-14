@@ -43,6 +43,7 @@
 		F4484BAB178D926200BAC560 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BAA178D926100BAC560 /* ShareViewController.m */; };
 		F4484BAE178D937200BAC560 /* Share_Mdl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BAD178D937200BAC560 /* Share_Mdl.m */; };
 		F4484BB1178D938E00BAC560 /* Share_Cntrl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4484BB0178D938E00BAC560 /* Share_Cntrl.m */; };
+		F44A561A1791ADC6002D75F4 /* DailyQuoteVal.m in Sources */ = {isa = PBXBuildFile; fileRef = F44A56191791ADC6002D75F4 /* DailyQuoteVal.m */; };
 		F458ABDC178DC50000874E53 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F458ABDB178DC50000874E53 /* Twitter.framework */; };
 		F45CC15B1776829E00F8892E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15A1776829E00F8892E /* UIKit.framework */; };
 		F45CC15D1776829E00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
@@ -60,6 +61,8 @@
 		F45CC1891776829F00F8892E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45CC15C1776829E00F8892E /* Foundation.framework */; };
 		F45CC1911776829F00F8892E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F45CC18F1776829F00F8892E /* InfoPlist.strings */; };
 		F45CC1941776829F00F8892E /* EmbraceTheChaosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CC1931776829F00F8892E /* EmbraceTheChaosTests.m */; };
+		F470E9B7178EF9F90045CB08 /* Index_Mdl.m in Sources */ = {isa = PBXBuildFile; fileRef = F470E9B6178EF9F90045CB08 /* Index_Mdl.m */; };
+		F470E9BB178EFB770045CB08 /* Index_Cntrl.m in Sources */ = {isa = PBXBuildFile; fileRef = F470E9BA178EFB770045CB08 /* Index_Cntrl.m */; };
 		F47BCFDE1778777200CD5949 /* DailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BCFDD1778777200CD5949 /* DailyViewController.m */; };
 		F47BCFE11778779B00CD5949 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BCFE01778779B00CD5949 /* IndexViewController.m */; };
 		F47BCFE4177877B200CD5949 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BCFE3177877B200CD5949 /* FavoritesViewController.m */; };
@@ -134,6 +137,8 @@
 		F4484BAD178D937200BAC560 /* Share_Mdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share_Mdl.m; sourceTree = "<group>"; };
 		F4484BAF178D938D00BAC560 /* Share_Cntrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share_Cntrl.h; sourceTree = "<group>"; };
 		F4484BB0178D938E00BAC560 /* Share_Cntrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share_Cntrl.m; sourceTree = "<group>"; };
+		F44A56181791ADC6002D75F4 /* DailyQuoteVal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyQuoteVal.h; sourceTree = "<group>"; };
+		F44A56191791ADC6002D75F4 /* DailyQuoteVal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyQuoteVal.m; sourceTree = "<group>"; };
 		F458ABDB178DC50000874E53 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		F45CC1561776829E00F8892E /* EmbraceTheChaos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbraceTheChaos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45CC15A1776829E00F8892E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +161,10 @@
 		F45CC1901776829F00F8892E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F45CC1921776829F00F8892E /* EmbraceTheChaosTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmbraceTheChaosTests.h; sourceTree = "<group>"; };
 		F45CC1931776829F00F8892E /* EmbraceTheChaosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmbraceTheChaosTests.m; sourceTree = "<group>"; };
+		F470E9B5178EF9F90045CB08 /* Index_Mdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Index_Mdl.h; sourceTree = "<group>"; };
+		F470E9B6178EF9F90045CB08 /* Index_Mdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Index_Mdl.m; sourceTree = "<group>"; };
+		F470E9B9178EFB770045CB08 /* Index_Cntrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Index_Cntrl.h; sourceTree = "<group>"; };
+		F470E9BA178EFB770045CB08 /* Index_Cntrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Index_Cntrl.m; sourceTree = "<group>"; };
 		F47BCFDC1778777200CD5949 /* DailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyViewController.h; sourceTree = "<group>"; };
 		F47BCFDD1778777200CD5949 /* DailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyViewController.m; sourceTree = "<group>"; };
 		F47BCFDF1778779B00CD5949 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
@@ -369,6 +378,10 @@
 				F4FB6038178BC86400D5F3AF /* Daily_Mdl.m */,
 				F4484BAC178D937200BAC560 /* Share_Mdl.h */,
 				F4484BAD178D937200BAC560 /* Share_Mdl.m */,
+				F470E9B5178EF9F90045CB08 /* Index_Mdl.h */,
+				F470E9B6178EF9F90045CB08 /* Index_Mdl.m */,
+				F44A56181791ADC6002D75F4 /* DailyQuoteVal.h */,
+				F44A56191791ADC6002D75F4 /* DailyQuoteVal.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -390,6 +403,8 @@
 				F4FB603B178C251100D5F3AF /* CrudOps_Cntrl.m */,
 				F4484BAF178D938D00BAC560 /* Share_Cntrl.h */,
 				F4484BB0178D938E00BAC560 /* Share_Cntrl.m */,
+				F470E9B9178EFB770045CB08 /* Index_Cntrl.h */,
+				F470E9BA178EFB770045CB08 /* Index_Cntrl.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -554,6 +569,9 @@
 				F4484BAB178D926200BAC560 /* ShareViewController.m in Sources */,
 				F4484BAE178D937200BAC560 /* Share_Mdl.m in Sources */,
 				F4484BB1178D938E00BAC560 /* Share_Cntrl.m in Sources */,
+				F470E9B7178EF9F90045CB08 /* Index_Mdl.m in Sources */,
+				F470E9BB178EFB770045CB08 /* Index_Cntrl.m in Sources */,
+				F44A561A1791ADC6002D75F4 /* DailyQuoteVal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

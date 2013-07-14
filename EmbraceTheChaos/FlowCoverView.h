@@ -14,6 +14,11 @@
 #import "DataCache.h"
 
 
+@class FlowCoverView;
+@protocol FlowCoverViewDelegate
+- (void)rateView:(FlowCoverView *)rateView ratingDidChange:(int)rating;
+@end
+
 @interface FlowCoverView : UIView
 {
 	// Current state support
@@ -38,12 +43,16 @@
     EAGLContext *context;
     GLuint viewRenderbuffer, viewFramebuffer;
     GLuint depthRenderbuffer;
+    
 }
+@property (assign) id <FlowCoverViewDelegate> delegate;
+@property(nonatomic,retain)NSArray *topicPictures;
 
 -(UIImage*) drawText:(NSString*) text inImage:(UIImage*)  image ;
 - (void)draw;					// Draw the FlowCover view with current state
 - (int)flowCoverNumberImages:(FlowCoverView *)view;
 - (UIImage *)flowCover:(FlowCoverView *)view cover:(int)cover;
 - (void)flowCover:(FlowCoverView *)view didSelect:(int)cover;
+
 @end
 

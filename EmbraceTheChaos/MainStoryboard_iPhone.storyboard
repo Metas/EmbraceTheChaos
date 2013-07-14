@@ -44,7 +44,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Daily" image="first" id="7"/>
                     <connections>
@@ -279,7 +279,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Index" image="second" id="6"/>
                     <connections>
-                        <outlet property="cover" destination="cWP-XT-i9j" id="ebp-PI-dt2"/>
+                        <outlet property="cover" destination="cWP-XT-i9j" id="lls-FB-qa4"/>
                         <outlet property="lblTopic" destination="ykN-Yh-kNl" id="Vih-x4-tQ0"/>
                     </connections>
                 </viewController>

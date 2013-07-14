@@ -17,9 +17,11 @@
 @synthesize btnShare;
 @synthesize btnSaveImge;
 @synthesize DailyQuoteView;
-//@synthesize cover;
+
 @synthesize btnFavorite;
 @synthesize dailyQuote ;
+@synthesize quoteNumber;
+@synthesize control1;
 
 -(id) init
 {
@@ -32,6 +34,19 @@
     
 }
 
+
+-(void) rateView:(Index_Cntrl *)rateView quoteDidChange:(int)quoteId 
+{
+    quoteNumber = quoteId; 
+    NSLog(@"QuoteNumberinQuoteChange is %d",quoteNumber);
+
+}
+-(void) viewDidAppear:(BOOL)animated
+{
+    
+    NSLog(@"QuoteNumber is %d",quoteNumber);
+    //[self viewDidLoad];
+}
 -(void) viewDidLoad
 {
     //set the right swipe gesture here
@@ -49,6 +64,10 @@
     lastQuoteNum =[[NSMutableArray alloc]init];
     
     [super viewDidLoad];
+    control1 = [[IndexViewController alloc]init];
+    
+    [self.control1 setDelegateIndex:self];
+    
     self.dailyQuote =[Daily_Cntrl database].DailyQuote;
     self.title = @"DailyQuote";
     
@@ -104,10 +123,6 @@
     {
         NSLog(@"GOT EMPTY VALUES");
     }
-    
-   
-    
-
 }
 
 -(void)handleSwipeRight:(UISwipeGestureRecognizer *)recognizer 

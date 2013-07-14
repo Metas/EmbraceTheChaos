@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "DailyCoverView.h"
-
+#import "IndexViewController.h"
 #import "Share_Mdl.h"
 
-@interface DailyViewController : UIViewController
+@interface DailyViewController : UIViewController <Index_ViewCntrlDelegate>
 {
     NSArray *dailyQuote ;
     NSInteger quoteNum ;
     UIImage * picture;
     NSMutableArray * lastQuoteNum ;
     Share_Mdl *Qpicture ;
+    IndexViewController* control1;
+    int quoteNumber ;
 }
+@property (strong, nonatomic) IndexViewController  *control1;
 
+@property(nonatomic,assign) int quoteNumber;
 @property(nonatomic,retain)NSArray *dailyQuote;
 @property (weak, nonatomic) IBOutlet UIImageView *DailyQuoteView;
 
@@ -35,5 +39,6 @@
 
 -(UIImage*) drawText:(NSString*) text inImage:(UIImage*)  image ;
 
+//-(void) initWithIndex:(int) index ;
 
 @end
