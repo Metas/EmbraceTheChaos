@@ -26,8 +26,7 @@ static Info_Cntrl *_database;
 -(NSString *)dataFilePath:(BOOL)forSave 
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
-                                                         NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *documentsPath = [documentsDirectory
                                stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
@@ -45,7 +44,8 @@ static Info_Cntrl *_database;
 -(NSString *) GetDocumentDirectory
 {
     fileMgr = [NSFileManager defaultManager];
-    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
     
     return homeDir;
     
@@ -115,6 +115,8 @@ static Info_Cntrl *_database;
  */
 -(NSArray *)randomQuote
 {
+    NSString *topicVal ;
+    NSString *quoteVal ;
     NSMutableArray * retVal =[[NSMutableArray alloc]init];
     NSString *query = @"select a.quote_id,b.topic_val, a.quote_val from tbl_quote a, tbl_topic b where a.topic_id = b.topic_id order by RANDOM() LIMIT 1";
     
@@ -128,9 +130,16 @@ static Info_Cntrl *_database;
         int quoteNum = (int) sqlite3_column_int(statement, 0);
         char *topicChars = (char*)sqlite3_column_text(statement, 1);
         char *quoteChars = (char*)sqlite3_column_text(statement, 2);
-        NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
-        NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
-        Info_Mdl *info = [[Info_Mdl alloc]initWithRandomQuote:quoteNum topic:topicVal quote:quoteVal];
+            if(topicChars)
+            {
+                topicVal = [[NSString alloc]initWithUTF8String:topicChars];
+            }
+            
+            if(quoteChars)
+            {
+                quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            }
+            Info_Mdl *info = [[Info_Mdl alloc]initWithRandomQuote:quoteNum topic:topicVal quote:quoteVal];
         [retVal addObject:info];
         //retVal = [[topicVal stringByAppendingString:@": "]stringByAppendingString:quoteVal];
         }

@@ -20,15 +20,25 @@ static Daily_Cntrl *_database;
 {
     if(_database == nil)
     {
+        @try
+        {
         _database = [[Daily_Cntrl alloc]init];
+        NSLog(@"Database values %@",_database.description);
+        return _database;
+        }@catch(NSException *e)
+        {
+            NSLog(@"Exception %@",e.description);
+        }
     }
-    return _database;
+    else
+        return _database;
+    
 }
 -(NSString *)dataFilePath:(BOOL)forSave 
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
-                                                         NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *documentsPath = [documentsDirectory
                                stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
@@ -46,7 +56,8 @@ static Daily_Cntrl *_database;
 -(NSString *) GetDocumentDirectory
 {
     fileMgr = [NSFileManager defaultManager];
-    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
     
     return homeDir;
     
@@ -70,7 +81,8 @@ static Daily_Cntrl *_database;
                 {
                     NSLog(@"Cannot locate database file '%@'.",sqLiteDb);
                 }
-                if (!(sqlite3_open([sqLiteDb UTF8String], &_database) == SQLITE_OK)) 
+                int val = sqlite3_open([sqLiteDb UTF8String], &_databasepointer) ;
+                if (!(val== SQLITE_OK)) 
                 {
                     NSLog(@"Failed to open database!");
                 }
@@ -85,9 +97,10 @@ static Daily_Cntrl *_database;
                     NSLog(@"Cannot locate database file '%@'.",sqLiteDb);
                 }
                 
+                const char *dbpath = [sqLiteDb UTF8String];
+                int val= sqlite3_open(dbpath, &_databasepointer);
                 
-                
-                if (!(sqlite3_open([sqLiteDb UTF8String], &_database) == SQLITE_OK)) 
+                if (!(val == SQLITE_OK)) 
                 {
                     NSLog(@"Failed to open database!");
                 }
@@ -100,7 +113,7 @@ static Daily_Cntrl *_database;
         }
         @finally 
         {
-            //return self;
+            return self;
         }
     }
     return self;
@@ -108,7 +121,7 @@ static Daily_Cntrl *_database;
 
 - (void)dealloc 
 {
-    sqlite3_close(_database);
+    sqlite3_close(_databasepointer);
 }
 /*c.execute('create table tbl_topic(topic_id integer,topic_val text)')
  c.execute('create table tbl_quote(quote_id integer primary key autoincrement,topic_id integer, pic_id integer, isFav integer, saveYN integer, createDate text, quote_val text)')
@@ -150,13 +163,14 @@ sqlite3_finalize(stmt);
 
 - (NSArray *)DailyQuote 
 {
-    
+    NSString *topicVal =@"";
+    NSString *quoteVal =@"";
     NSMutableArray *retval = [[NSMutableArray alloc] init] ;
     NSString *query = @"select a.quote_id, a.topic_id, b.topic_val, a.quote_val, c.picture from tbl_quote a, tbl_topic b, tbl_picture c where a.topic_id = b.topic_id and c.pic_id= a.pic_id order by RANDOM() LIMIT 1";
-    
+    const char *queryVal = [query UTF8String];
     sqlite3_stmt *statement;
-    
-    if(sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil)==SQLITE_OK)
+    int val = sqlite3_prepare_v2(_databasepointer, queryVal, -1, &statement, nil);
+    if(val==SQLITE_OK)
     {
         while(sqlite3_step(statement)==SQLITE_ROW)
         {
@@ -165,8 +179,15 @@ sqlite3_finalize(stmt);
             int topicNum = sqlite3_column_int(statement,1);
             char *topicChars = (char*)sqlite3_column_text(statement, 2);
             char *quoteChars = (char*)sqlite3_column_text(statement, 3);
-            NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
-            NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            if(topicChars)
+            {
+                topicVal = [[NSString alloc]initWithUTF8String:topicChars];
+            }
+            
+            if(quoteChars)
+            {
+                quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            }
             NSData *data = [[NSData alloc] initWithBytes:sqlite3_column_blob(statement, 4) length:sqlite3_column_bytes(statement, 4)];
             
             if(data.length ==0)
@@ -191,13 +212,16 @@ sqlite3_finalize(stmt);
 
 - (NSArray *)LastQuote:(NSInteger)quoteID 
 {
+    NSString *topicVal =@"";
+    NSString *quoteVal =@"";
+
     fileMgr = [NSFileManager defaultManager];
 
     sqlite3 *cruddb ;
     
     
     //select
-    NSString *query = [NSString stringWithFormat:@"select a.quote_id, a.topic_id, b.topic_val, a.quote_val, c.picture from tbl_quote a, tbl_topic b, tbl_picture c where a.quote_id=%d",quoteID];
+    NSString *query = [NSString stringWithFormat:@"select a.quote_id, a.topic_id, b.topic_val, a.quote_val, c.picture from tbl_quote a, tbl_topic b, tbl_picture c where a.pic_id= c.pic_id and a.quote_id=%d",quoteID];
 
     NSLog(@"Query is %@",query);
     
@@ -214,15 +238,24 @@ sqlite3_finalize(stmt);
     int okVal =sqlite3_prepare_v2(cruddb, [query UTF8String], -1, &statement, nil);
     if(okVal==SQLITE_OK)
     {
-        while(sqlite3_step(statement)==SQLITE_ROW)
+        NSLog(@"Numberofrecords:%d",sqlite3_data_count(statement));
+        if(sqlite3_step(statement)==SQLITE_ROW)
         {
             UIImage *picture ;
             int quoteNum = sqlite3_column_int(statement,0);
             int topicNum = sqlite3_column_int(statement,1);
             char *topicChars = (char*)sqlite3_column_text(statement, 2);
             char *quoteChars = (char*)sqlite3_column_text(statement, 3);
-            NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
-            NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            if(topicChars)
+            {
+                topicVal = [[NSString alloc]initWithUTF8String:topicChars];
+            }
+            
+            if(quoteChars)
+            {
+                quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            }
+            
             NSData *data = [[NSData alloc] initWithBytes:sqlite3_column_blob(statement, 4) length:sqlite3_column_bytes(statement, 4)];
             
             if(data.length ==0)
@@ -243,7 +276,7 @@ sqlite3_finalize(stmt);
     }
     else
     {
-        NSLog(@"ERROR %i",sqlite3_errcode(_database));
+        NSLog(@"ERROR %i",sqlite3_errcode(_databasepointer));
         NSLog(@"Datarows got %d",sqlite3_data_count(statement));
     }
     sqlite3_finalize(statement);

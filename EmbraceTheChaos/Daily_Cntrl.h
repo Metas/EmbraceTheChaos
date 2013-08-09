@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+
 @interface Daily_Cntrl : NSObject
 {
-        sqlite3 * _database;
+        sqlite3 * _databasepointer;
     NSFileManager *fileMgr;
     NSString *homeDir;
     NSString *sqLiteDb ; 

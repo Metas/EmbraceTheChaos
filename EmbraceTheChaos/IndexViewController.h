@@ -12,10 +12,10 @@
 #import "Index_Cntrl.h"
 #import "DailyQuoteVal.h"
 
-@class IndexViewController;
-@protocol Index_ViewCntrlDelegate
-- (void)rateView:(IndexViewController *)rateView quoteDidChange:(int) quoteId;
-@end
+//@class IndexViewController;
+//@protocol Index_ViewCntrlDelegate
+//- (void)rateView:(IndexViewController *)rateView quoteDidChange:(int) quoteId;
+//@end
 @interface IndexViewController : UIViewController<FlowCoverViewDelegate>
 {
     NSArray *topicPic ;
@@ -25,6 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet FlowCoverView  *cover;
 @property (weak, nonatomic) IBOutlet UILabel *lblTopic;
-@property (assign,nonatomic) id <Index_ViewCntrlDelegate> delegateIndex;
+//@property (assign,nonatomic) id <Index_ViewCntrlDelegate> delegateIndex;
 -(int) setQuoteNumber:(int) quoteNumber ;
 @end

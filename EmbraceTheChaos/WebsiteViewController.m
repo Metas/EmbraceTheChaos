@@ -44,6 +44,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //customize
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if(INTERFACE_IS_PHONE)
+    {
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_320X480.png"]]] ;;
+        }
+        if(result.height == 568)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_320X568.png"]]] ;
+        }
+        
+    }
+    else if (INTERFACE_IS_PAD)
+    {
+        [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_768X1024.png"]]] ;
+        
+        
+    }
+    
+
+
     NSString *fullURL =@"http://www.google.com" ;//change this url to embrace the chaos website
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];

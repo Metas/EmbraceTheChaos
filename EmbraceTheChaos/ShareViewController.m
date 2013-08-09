@@ -55,6 +55,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //customize
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if(INTERFACE_IS_PHONE)
+    {
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background4_320X480.png"]]] ;;
+        }
+        if(result.height == 568)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background4_320X568.png"]]] ;
+        }
+        
+    }
+    else if (INTERFACE_IS_PAD)
+    {
+        [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background4_768X1024.png"]]] ;
+        
+        
+    }
+    
+
+
 }
 
 

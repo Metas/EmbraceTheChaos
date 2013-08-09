@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DailyQuoteVal : NSObject
-{
-        int quoteID;
-}
-@property(nonatomic,assign) int quoteID;
--(id) initWithQuoteID:(int)quoteNum ;
+extern int quoteID;
 
+@interface DailyQuoteVal : NSObject
 @end

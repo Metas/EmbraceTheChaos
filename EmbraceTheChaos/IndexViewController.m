@@ -15,14 +15,14 @@
 @synthesize cover;
 @synthesize lblTopic;
 @synthesize topicPic ;
-@synthesize delegateIndex;
+//@synthesize delegateIndex;
 
 
 -(int) setQuoteNumber:(int)quoteNumber
 {
     NSLog(@"In IndexControl %d",quoteNumber);
 
-    [self.delegateIndex rateView:self quoteDidChange:quoteNumber];
+    //[self.delegateIndex rateView:self quoteDidChange:quoteNumber];
     
     
     return 0;
@@ -49,16 +49,38 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
+    //customize
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if(INTERFACE_IS_PHONE)
+    {
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_320X480.png"]]] ;;
+        }
+        if(result.height == 568)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_320X568.png"]]] ;
+        }
+        
+    }
+    else if (INTERFACE_IS_PAD)
+    {
+        [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background2_768X1024.png"]]] ;
+        
+        
+    }
+    
+
     self.cover.delegate = self;
-    self.delegateIndex =self;
+    //self.delegateIndex =self;
 }
 // Add to bottom
 - (void)rateView:(FlowCoverView *)rateView ratingDidChange:(int)rating 
 {
-    quoteNum = rating;
-    
-    int val = [self setQuoteNumber:quoteNum];
-    if(val ==0)
+    quoteID = rating;//global var 
+
     [self.tabBarController setSelectedIndex:0]  ;
     //[UIView transitionFromView:self.view toView:[[self.tabBarController.viewControllers objectAtIndex:0] view] duration:1 options:UIModalTransitionStyleFlipHorizontal completion:^(BOOL finished) { if (finished) { [self.tabBarController setSelectedIndex:0]  ;}}];
 }

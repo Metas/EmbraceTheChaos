@@ -15,11 +15,14 @@
     int topicID;
     NSString *topic;
     NSString *quote;
+     UIImage *pic ;
 }
 @property(nonatomic,assign) int quoteID;
 @property(nonatomic,assign) int topicID;
 @property(nonatomic,retain) NSString* topic;
 @property(nonatomic,retain) NSString* quote;
 
--(id) initWithQuoteID:(int)quoteNum topicID:(int)tpcId topic:(NSString *)tpk quote:(NSString *)quot ;
+@property(nonatomic,retain) UIImage *pic;
+
+-(id) initWithQuoteID:(int)quoteNum topicID:(int)tpcId topic:(NSString *)tpk quote:(NSString *)quot pic:(UIImage *)picture ;
 @end

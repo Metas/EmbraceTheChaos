@@ -13,3 +13,7 @@
     #import <Foundation/Foundation.h>
 #endif
 #import <FacebookSDK/FacebookSDK.h> 
+
+#define INTERFACE_IS_PHONE ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+
+#define INTERFACE_IS_PAD ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad)

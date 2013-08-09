@@ -30,7 +30,7 @@ static Index_Cntrl *_database;
 -(NSString *)dataFilePath:(BOOL)forSave 
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *documentsPath = [documentsDirectory
                                stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
@@ -48,13 +48,12 @@ static Index_Cntrl *_database;
 -(NSString *) GetDocumentDirectory
 {
     fileMgr = [NSFileManager defaultManager];
-    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
     
     return homeDir;
     
 }
-
-
 
 - (id)init 
 {
@@ -116,6 +115,8 @@ static Index_Cntrl *_database;
 }
 - (NSArray *)topicPicture 
 {
+    NSString *topicVal ;
+    NSString *quoteVal ;
     fileMgr = [NSFileManager defaultManager];
     sqlite3_stmt *stmt=nil;
     sqlite3 *cruddb ;
@@ -144,8 +145,15 @@ static Index_Cntrl *_database;
             int topicNum = sqlite3_column_int(stmt,1);
             char *topicChars = (char*)sqlite3_column_text(stmt, 2);
             char *quoteChars = (char*)sqlite3_column_text(stmt, 3);
-            NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
-            NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            if(topicChars)
+            {
+                topicVal = [[NSString alloc]initWithUTF8String:topicChars];
+            }
+            
+            if(quoteChars)
+            {
+                quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            }
             NSData *data = [[NSData alloc] initWithBytes:sqlite3_column_blob(stmt, 4) length:sqlite3_column_bytes(stmt, 4)];
             
             if(data.length ==0)

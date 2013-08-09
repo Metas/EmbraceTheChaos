@@ -267,9 +267,9 @@ const GLshort GTextures[] = {
 - (void)flowCover:(FlowCoverView *)view didSelect:(int)image
 {
 	NSLog(@"Selected Index %d",image);
-
+    int imageVal = image+1;//since it starts from 0
     //call delegate
-    [self.delegate rateView:self ratingDidChange:image];
+    [self.delegate rateView:self ratingDidChange:imageVal];
 }
 
 
@@ -311,6 +311,7 @@ static void *GData = NULL;
 	 */
 	
 	CGSize size = image.size;
+    //256
 	
 	if (size.width > size.height) {
 		size.height = 256 * (size.height / size.width);
@@ -392,19 +393,24 @@ static void *GData = NULL;
 	}
 	m[3] = -f;
 	m[0] = 1-fabs(f);
-	double sc = 0.45 * (1 - fabs(f));
+	//double sc = 0.45 * (1 - fabs(f));
+    double sc = .7 * (1 - fabs(f));
 	trans += f * 1;
 	
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D,fcr.texture);
 	glTranslatef(trans, 0, 0);
+   // glScalef(sc,sc,1.0);
 	glScalef(sc,sc,1.0);
 	glMultMatrixf(m);
 	glDrawArrays(GL_TRIANGLE_STRIP,0,4);
 	
 	// reflect
 	glTranslatef(0,-2,0);
-	glScalef(1,-1,1);
+    
+    glScalef(1,-1,2.0);
+    
+	//glScalef(1,-1,1);
 	glColor4f(0.5,0.5,0.5,0.5);
 	glDrawArrays(GL_TRIANGLE_STRIP,0,4);
 	glColor4f(1,1,1,1);

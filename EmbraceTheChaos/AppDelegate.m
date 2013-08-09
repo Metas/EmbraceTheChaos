@@ -9,19 +9,87 @@
 #import "AppDelegate.h"
 #import "CrudOps_Cntrl.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "WebserviceCall.h"
 
 
 @implementation AppDelegate
-
+@synthesize quoteID;
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     //copy database from resources(which is read only to documents where you can perform writes and reads
+    
     CrudOps_Cntrl *dbControl = [[CrudOps_Cntrl alloc]init];
     [dbControl CopyDbToDocumentsFolder];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [self customizeAppearance];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound];
+    NSDictionary *remoteNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    //copy this to if you recieve remote notif
+    //[self addQuotes];
+    if(remoteNotif)
+    {
+        //call webservice to get last 5 quotes
+        NSLog(@"RemoteNotification recieved;App did finishlaunching launched");
+        [self addQuotes];
+    }
     return YES;
+}
+
+#pragma remoteNotification
+-(void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token =[deviceToken description];
+    NSLog(@"My token is :%@",token) ;
+    token = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    WebserviceCall *ws = [[WebserviceCall alloc]init];
+    [ws executeForToken:token];
+    
+}
+-(void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+     NSLog(@"Failed to get token, error: %@",error) ;
+}
+-(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:@"Push Alert" message:userInfo[@"aps"][@"alert"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+    //call webservice to get last 5 quotes
+    NSLog(@"RemoteNotification recieved;AppdidRecieveRemoteNotification launched");
+    [self addQuotes];
+}
+-(void) addQuotes
+{
+    WebserviceCall *ws = [[WebserviceCall alloc]init];
+    [ws execute];
+}
+#pragma customize
+-(void) customizeAppearance
+{
+    UIImage *gradientImage ;
+    if(INTERFACE_IS_PAD)
+    {
+        gradientImage = [[UIImage imageNamed:@"A.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+    else
+    {
+         gradientImage = [[UIImage imageNamed:@"A.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+    
+    //Customize for all navigation bars
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.05 green:0.3 blue:0.53 alpha:1.0], UITextAttributeTextColor,[UIColor                                                                                                                                                                                          colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -0.1)],UITextAttributeTextShadowOffset,[UIFont fontWithName:@"Arial-Bold" size:0.0],UITextAttributeFont,nil]];
+    
+    //Customize tab bars
+    [[UITabBar appearance]setTintColor:[UIColor colorWithRed:13/255 green:82/255 blue:136/255 alpha:1.0]];
+    
+    [[UIBarButtonItem appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],UITextAttributeTextColor,[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, .1)],UITextAttributeTextShadowOffset,[UIFont fontWithName:@"Arial-Bold" size:0.0],UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+    //segment control
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:13/255 green:82/255 blue:136/255 alpha:1.0]];
 }
 
 #pragma Facebook

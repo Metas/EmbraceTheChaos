@@ -27,8 +27,7 @@ static Favorite_Cntrl *_database;
 -(NSString *)dataFilePath:(BOOL)forSave 
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
-                                                         NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *documentsPath = [documentsDirectory
                                stringByAppendingPathComponent:@"embrace_the_chaos.sqlite3"];
@@ -47,7 +46,7 @@ static Favorite_Cntrl *_database;
 {
     fileMgr = [NSFileManager defaultManager];
 
-    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
     
     return homeDir;
     
@@ -117,6 +116,8 @@ static Favorite_Cntrl *_database;
 
 - (NSArray *)favouriteQuotes 
 {
+    NSString *topicVal;
+    NSString *quoteVal;
     fileMgr = [NSFileManager defaultManager];
     sqlite3_stmt *stmt=nil;
     sqlite3 *cruddb ;
@@ -124,7 +125,7 @@ static Favorite_Cntrl *_database;
     NSMutableArray *retval = [[NSMutableArray alloc] init] ;
     
     //select
-    NSString *query = [NSString stringWithFormat:@"select a.quote_id, a.topic_id, b.topic_val, a.quote_val from tbl_quote a, tbl_topic b where a.isFav=1 and a.topic_id = b.topic_id order by a.topic_id"];
+    NSString *query = [NSString stringWithFormat:@"select a.quote_id, a.topic_id, b.topic_val, a.quote_val, c.picture from tbl_quote a, tbl_topic b , tbl_picture c  where a.isFav=1 and a.topic_id = b.topic_id and c.pic_id= a.pic_id order by a.topic_id"];
     NSLog(@"Query is %@",query);
 
     //Open db
@@ -140,13 +141,33 @@ static Favorite_Cntrl *_database;
         int value= sqlite3_step(stmt);
         while(value==SQLITE_ROW)
         {
+            UIImage *picture ;
             int quoteNum = sqlite3_column_int(stmt,0);
             int topicNum = sqlite3_column_int(stmt,1);
             char *topicChars = (char*)sqlite3_column_text(stmt, 2);
             char *quoteChars = (char*)sqlite3_column_text(stmt, 3);
-            NSString *topicVal = [[NSString alloc]initWithUTF8String:topicChars];
-            NSString *quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
-            Favorite_Mdl *info = [[Favorite_Mdl alloc]initWithQuoteID:quoteNum topicID:topicNum topic:topicVal quote:quoteVal];
+            if(topicChars)
+            {
+                topicVal = [[NSString alloc]initWithUTF8String:topicChars];
+            }
+            
+            if(quoteChars)
+            {
+                quoteVal = [[NSString alloc]initWithUTF8String:quoteChars];
+            }
+            NSData *data = [[NSData alloc] initWithBytes:sqlite3_column_blob(stmt, 4) length:sqlite3_column_bytes(stmt, 4)];
+            
+            if(data.length ==0)
+            {
+                NSLog(@"No image found.");//put a default image from filestructure here
+                picture =[UIImage imageNamed:@"A.png"];
+            }
+            else
+            {
+                NSLog(@"Picture found %d",data.length);
+                picture = [[UIImage alloc] initWithData:data]; 
+            }
+            Favorite_Mdl *info = [[Favorite_Mdl alloc]initWithQuoteID:quoteNum topicID:topicNum topic:topicVal quote:quoteVal pic:picture];
             [retval addObject:info];
              value= sqlite3_step(stmt);
         }
@@ -174,7 +195,8 @@ static Favorite_Cntrl *_database;
     int okVal =sqlite3_prepare_v2(cruddb, [query UTF8String], -1, &stmt, nil);
     if(okVal==SQLITE_OK)
     {
-        int value= sqlite3_step(stmt);
+        int val =sqlite3_step(stmt);
+        NSLog(@"Value of sqlite%d",val);
     }
     else
     {

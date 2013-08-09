@@ -8,14 +8,8 @@
 
 #import "DailyQuoteVal.h"
 
+int quoteID=0;
+
 @implementation DailyQuoteVal
-@synthesize quoteID;
--(id) initWithQuoteID:(int)quoteNum 
-{
-    self.quoteID = quoteNum;
-
-    return self;
-}
-
 
 @end

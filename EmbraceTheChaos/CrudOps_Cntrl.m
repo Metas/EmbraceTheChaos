@@ -8,6 +8,7 @@
 
 #import "CrudOps_Cntrl.h"
 #import <sqlite3.h>
+#import <sys/xattr.h>
 
 @implementation CrudOps_Cntrl
 @synthesize createDate;
@@ -19,6 +20,21 @@
 @synthesize title;
 @synthesize topicId;
 @synthesize topicVal;
+
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSString *)URL
+{
+    NSURL *urlRep = [[NSURL alloc]initFileURLWithPath:URL];
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [urlRep path]]);
+    
+    const char* filePath = [[urlRep path] fileSystemRepresentation];
+    
+    const char* attrName = "com.apple.MobileBackup";
+    u_int8_t attrValue = 1;
+    
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    return result == 0;
+}
 
 -(void)CopyDbToDocumentsFolder
 {
@@ -49,6 +65,13 @@
             UIAlertView *tellErr = [[UIAlertView alloc] initWithTitle:title message:@"Unable to copy database." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [tellErr show];
         }
+        else //copy success now avoid it being backed up in cloud
+        {
+            if([self addSkipBackupAttributeToItemAtURL:dbpath])
+                NSLog(@"Succesfully skipped from copying to cloud");
+            else
+                 NSLog(@"Something went wrong in skipping copying to cloud");
+        }
 
     }
     
@@ -57,8 +80,15 @@
 }
 -(NSString *) GetDocumentDirectory
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *appDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
+    if([fileManager fileExistsAtPath:appDir]==NO)
+        [fileManager createDirectoryAtPath:appDir withIntermediateDirectories:YES attributes:nil error:nil];
+  
+    
     fileMgr = [NSFileManager defaultManager];
-    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Application Support"];
     
     return homeDir;
 
