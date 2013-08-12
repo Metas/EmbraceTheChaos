@@ -11,15 +11,10 @@
 @interface FavTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *Img01;
 @property (weak, nonatomic) IBOutlet UIImageView *Img02;
-@property (weak, nonatomic) IBOutlet UIButton *Img1Del;
-@property (weak, nonatomic) IBOutlet UIButton *Img2Del;
-@property (weak, nonatomic) IBOutlet UIButton *Img1More;
-@property (weak, nonatomic) IBOutlet UIButton *Img2More;
-- (IBAction)Img1Delete:(id)sender;
-- (IBAction)Img2Delete:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *Delete1Img;
+@property (weak, nonatomic) IBOutlet UIButton *Detail1Img;
 
-- (IBAction)Img1More:(id)sender;
-
-- (IBAction)Img2More:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *Delete2Img;
+@property (weak, nonatomic) IBOutlet UIButton *Detail2Img;
 
 @end

@@ -131,6 +131,14 @@
     [self btnNext].hidden =YES;
     [self btnShr].hidden =YES;
     
+    //insert today date in More
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"d MMM"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    [self.btnMore setTitle:dateString forState:UIControlStateNormal];
+    
+    
     [super viewDidLoad];
     self.cover.delegate = self;
     //control1 = [[IndexViewController alloc]init];

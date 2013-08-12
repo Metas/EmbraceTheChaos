@@ -12,11 +12,11 @@
 @interface FavTableViewController : UITableViewController
 {
     NSArray *favorites;
-    int rowCount;
-    UIButton *btnDeleteOne ;
-    UIButton *btnDeleteTwo ;
-    UIButton *btnMoreOne ;
-    UIButton *btnMoreTwo ;
+
+    //UIButton *btnDeleteOne ;
+    //UIButton *btnDeleteTwo ;
+    //UIButton *btnMoreOne ;
+    //UIButton *btnMoreTwo ;
     NSMutableArray *TwoQuoteImageArray ;
 }
 

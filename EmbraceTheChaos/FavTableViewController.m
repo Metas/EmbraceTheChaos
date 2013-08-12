@@ -24,17 +24,54 @@
     return self;
 }
 
+-(void) viewDidUnload
+{
+    favorites =nil;
+    [super viewDidUnload];
+}
 -(void)viewDidLoad
 {
-    
+    if(INTERFACE_IS_PHONE)
+    {
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background3_320X480.png"]]] ;;
+        }
+        if(result.height == 568)
+        {
+            [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background3_320X568.png"]]] ;
+        }
+        
+    }
+    else if (INTERFACE_IS_PAD)
+    {
+        [[self view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background3_768X1024.png"]]] ;
+        
+        
+    }
+    [self viewDidAppear:YES];
+   // self.favorites =[Favorite_Cntrl database].favouriteQuotes;
+
+    //[self getSectionAndKeyValues];
+
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    favorites =nil;
     self.favorites =[Favorite_Cntrl database].favouriteQuotes;
-
+    
     [self getSectionAndKeyValues];
-
+    [self.tableView reloadData];
 }
 
 -(void) getSectionAndKeyValues
 {
+    [self setSectionKeys:nil];
+    [self setSectionContents:nil];
+    
     NSMutableDictionary *contents = [[NSMutableDictionary alloc]init];
     NSMutableArray *keys =[[NSMutableArray alloc]init];
     int oldTopicId =0;
@@ -102,8 +139,10 @@
                 
             }
         }
+        
         [self setSectionKeys:keys];
         [self setSectionContents:contents];
+        
         
     }
 }
@@ -117,7 +156,7 @@
 {
     NSString *key = [[self sectionKeys] objectAtIndex:section];
     NSArray *contents = [[self sectionContents] objectForKey:key];
-    
+    TwoQuoteImageArray =nil;
     TwoQuoteImageArray = [[NSMutableArray alloc] init];
     
     for(int i=0,k=0; i<contents.count;i++,k++)
@@ -142,7 +181,7 @@
 
     
     NSInteger rows = TwoQuoteImageArray.count ;
-    rowCount =0;
+
     return rows;
 }
 - (NSString *)tableView:(UITableView *)tableView
@@ -153,65 +192,113 @@ titleForHeaderInSection:(NSInteger)section
     return key;
 }
 
+
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIButton *btnDeleteOne ;
+    UIButton *btnDeleteTwo ;
+    UIButton *btnMoreOne ;
+    UIButton *btnMoreTwo ;
     static NSString *cellIdentifier=@"Cell";
     FavTableCell *cell =(FavTableCell *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
-
-
-    btnDeleteOne = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnDeleteOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) +2, 2, 30,30);
-    btnDeleteOne.tag = indexPath.row;
-    [btnDeleteOne setBackgroundImage:[UIImage imageNamed:@"Delete_Icon_32.png"] forState:UIControlStateNormal];
-    [btnDeleteOne addTarget:self action:@selector(btnDeleteOneTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    btnMoreOne = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMoreOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) +2, 45, 30,30);
-    btnMoreOne.tag = indexPath.row;
-    [btnMoreOne setBackgroundImage:[UIImage imageNamed:@"More_Icon.png"] forState:UIControlStateNormal];
-    [btnMoreOne addTarget:self action:@selector(btnMoreOneTapped:) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    btnDeleteTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnDeleteTwo.frame=CGRectMake([cell Img02].center.x+([cell Img02].frame.size.width/2) +2, 2, 30,30);
-    btnDeleteTwo.tag = indexPath.row;
-    
-    [btnDeleteTwo setBackgroundImage:[UIImage imageNamed:@"Delete_Icon_32.png"] forState:UIControlStateNormal];
-    [btnDeleteTwo addTarget:self action:@selector(btnDeleteTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    btnMoreTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMoreTwo.frame=CGRectMake([cell Img02].center.x+([cell Img02].frame.size.width/2) +2, 45, 30,30);
-    btnMoreTwo.tag = indexPath.row;
-    [btnMoreTwo setBackgroundImage:[UIImage imageNamed:@"More_Icon.png"] forState:UIControlStateNormal];
-    [btnMoreTwo addTarget:self action:@selector(btnMoreTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     if (cell == nil)
     {
         cell = [[FavTableCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:cellIdentifier];
     }
+    UIButton *btn = nil;
+    
+    NSArray *Array1 = [cell.Img01 subviews] ;
+    for (btn in Array1){
+        if ([btn isKindOfClass:[UIButton class]]){
+            [btn removeFromSuperview];
+        }
+    }
+    
+    UIButton *btn2 = nil;
+    
+    NSArray *Array2 = [cell.Img02 subviews] ;
+    for (btn2 in Array2){
+        if ([btn2 isKindOfClass:[UIButton class]]){
+            [btn2 removeFromSuperview];
+        }
+    }
+    
+    btnDeleteOne = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnDeleteOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 2, 35,35);
+    btnDeleteOne.tag = indexPath.row;
+    [btnDeleteOne setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
+    [btnDeleteOne addTarget:self action:@selector(btnDeleteOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    btnMoreOne = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnMoreOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 45, 35,35);
+    btnMoreOne.tag = indexPath.row;
+    [btnMoreOne setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
+    [btnMoreOne addTarget:self action:@selector(btnMoreOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+    btnDeleteTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnDeleteTwo.frame=CGRectMake(cell.Img02.center.x-(cell.Img02.frame.size.width/2)-70, 2, 35,35);
+    //btnDeleteTwo.frame=CGRectMake(100, 45, 35,35);
+    
+    btnDeleteTwo.tag = indexPath.row;
+    
+    [btnDeleteTwo setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
+    [btnDeleteTwo addTarget:self action:@selector(btnDeleteTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+    btnMoreTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnMoreTwo.frame=CGRectMake([cell Img02].center.x-([cell Img02].frame.size.width/2)-70 , 45, 35,35);
+    btnMoreTwo.tag = indexPath.row;
+    [btnMoreTwo setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
+    [btnMoreTwo addTarget:self action:@selector(btnMoreTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+   
+    
+
     NSArray *subArray = [[NSArray alloc]initWithArray: [TwoQuoteImageArray objectAtIndex:[indexPath row]]];
+  
+
+    
     if(subArray.count ==2)
     {
+        //clear out
+        [cell Img01].image = nil;
+        [cell Img02].image =nil;
+        //a hack
+
+        
         UIImage *img = [subArray objectAtIndex:0];
         UIImage *img1 = [subArray objectAtIndex:1];
-        [cell addSubview:btnDeleteOne] ;
-        [cell addSubview:btnMoreOne] ;
+
         [cell Img01].image = img;
-        
+        [cell Img01].userInteractionEnabled =YES;
         [cell Img02].image =img1;
-        [cell addSubview:btnDeleteTwo];
-        [cell addSubview:btnMoreTwo] ;
+        [cell Img02].userInteractionEnabled =YES;
+        
+        [cell.Img01 addSubview:btnDeleteOne];
+        [cell.Img01 addSubview:btnMoreOne];
+        [cell.Img02 addSubview:btnDeleteTwo];
+        [cell.Img02 addSubview:btnMoreTwo];
+        btnDeleteOne =nil;
+        btnDeleteTwo = nil;
+        btnMoreOne =nil;
+        btnMoreTwo =nil;
+        
     }
     else
     {
+        //clear out
+        
+        [cell Img01].image = nil;
+        [cell Img02].image =nil;
+        //[cell.Img02 removeFromSuperview];
         UIImage *img = [subArray objectAtIndex:0];
+
         [cell Img01].image = img;
-        [cell addSubview:btnDeleteOne] ;
-        [cell addSubview:btnMoreOne] ;
+        [cell.Img01 addSubview:btnDeleteOne];
+        [cell.Img01 addSubview:btnMoreOne];
+
+        [cell Img01].userInteractionEnabled =YES;
+        btnDeleteOne =nil;
+        btnMoreOne =nil;
     }
     
     return cell;
@@ -223,19 +310,32 @@ titleForHeaderInSection:(NSInteger)section
     UIButton *Button=(id)sender;
     
     int index=Button.tag;
-    Favorite_Mdl *info=[favorites objectAtIndex:index];
+    int ind ;
+    if(index ==0)//do nothing
+    {
+        ind = index;
+    }
+    else
+    {
+        ind = index+index;
+    }
+    if(ind >= favorites.count)//then the last object was deleted
+        ind = favorites.count-1;
+    
+    Favorite_Mdl *info=[favorites objectAtIndex:ind];
     int quoteIDVal = [info quoteID];
     Favorite_Cntrl *removeFav =[[Favorite_Cntrl alloc]init];
     [removeFav removeFavoriteQuote:quoteIDVal];
     
-    rowCount =0 ;
+    favorites =nil;
+    TwoQuoteImageArray =nil;
+    self.favorites =nil;
+    //[self viewDidAppear:YES];
     self.favorites =[Favorite_Cntrl database].favouriteQuotes;
-    self.title = @"Favorites";
-    
     
     [self getSectionAndKeyValues];
-    //[self tableView].reloadData;
-    
+    [self.tableView reloadData];
+     
 }
 -(IBAction)btnDeleteTwoTapped:(id)sender
 {
@@ -243,18 +343,37 @@ titleForHeaderInSection:(NSInteger)section
     UIButton *Button=(id)sender;
     
     int index=Button.tag;
-    Favorite_Mdl *info=[favorites objectAtIndex:index];
+    int ind ;
+    if(index ==0)//add one
+    {
+        ind = index +1;
+    }
+    else
+    {
+        ind = index+index+1;
+    }
+    
+    if(ind >= favorites.count)//then the last object was deleted
+        ind = favorites.count-1 ;
+    
+    
+    
+    Favorite_Mdl *info=[favorites objectAtIndex:ind];
     int quoteIDVal = [info quoteID];
     Favorite_Cntrl *removeFav =[[Favorite_Cntrl alloc]init];
     [removeFav removeFavoriteQuote:quoteIDVal];
     
-    rowCount =0 ;
+    favorites =nil;
+    TwoQuoteImageArray =nil;
+    self.favorites =nil;
     self.favorites =[Favorite_Cntrl database].favouriteQuotes;
-    self.title = @"Favorites";
-    
+
     
     [self getSectionAndKeyValues];
-    //[self tableView].reloadData;
+    [self.tableView reloadData];
+    //btnDeleteTwo.hidden =YES;
+    
+    //[self viewDidAppear:YES];
     
 }
 -(IBAction)btnMoreOneTapped:(id)sender
@@ -263,9 +382,19 @@ titleForHeaderInSection:(NSInteger)section
     UIButton *Button=(id)sender;
     
     int index=Button.tag;
+    int ind ;
+    if(index ==0)//do nothing
+    {
+        ind = index;
+    }
+    else
+    {
+        ind = index+index;
+    }
+    if(ind >= favorites.count)//then the last object was selected
+        ind = favorites.count-1 ;
     //call daily view controller
-    Favorite_Mdl *info=[favorites objectAtIndex:index];
-    //  Favorite_Mdl *info=[favorites objectAtIndex:rowCount];
+    Favorite_Mdl *info=[favorites objectAtIndex:ind];
     quoteID = [info quoteID];
     
     
@@ -278,9 +407,19 @@ titleForHeaderInSection:(NSInteger)section
     UIButton *Button=(id)sender;
     
     int index=Button.tag;
+    int ind ;
+    if(index ==0)//add one
+    {
+        ind = index +1;
+    }
+    else
+    {
+        ind = index+index+1;
+    }
+    if(ind >= favorites.count)//then the last object was selected
+        ind = favorites.count -1;
     //call daily view controller
-    Favorite_Mdl *info=[favorites objectAtIndex:index];
-    //  Favorite_Mdl *info=[favorites objectAtIndex:rowCount];
+    Favorite_Mdl *info=[favorites objectAtIndex:ind];
     quoteID = [info quoteID];
     
     
