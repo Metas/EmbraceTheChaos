@@ -226,31 +226,66 @@ titleForHeaderInSection:(NSInteger)section
         }
     }
     
-    btnDeleteOne = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnDeleteOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 2, 35,35);
-    btnDeleteOne.tag = indexPath.row;
-    [btnDeleteOne setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
-    [btnDeleteOne addTarget:self action:@selector(btnDeleteOneTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    btnMoreOne = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMoreOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 45, 35,35);
-    btnMoreOne.tag = indexPath.row;
-    [btnMoreOne setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
-    [btnMoreOne addTarget:self action:@selector(btnMoreOneTapped:) forControlEvents:UIControlEventTouchUpInside];
-    btnDeleteTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnDeleteTwo.frame=CGRectMake(cell.Img02.center.x-(cell.Img02.frame.size.width/2)-70, 2, 35,35);
-    //btnDeleteTwo.frame=CGRectMake(100, 45, 35,35);
+    if (INTERFACE_IS_PAD)
+    {
+        btnDeleteOne = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnDeleteOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 2, 35,35);
+        btnDeleteOne.tag = indexPath.row;
+        [btnDeleteOne setBackgroundImage:[UIImage imageNamed:@"btnDelete_60.png"] forState:UIControlStateNormal];
+        [btnDeleteOne addTarget:self action:@selector(btnDeleteOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        btnMoreOne = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnMoreOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 45, 35,35);
+        btnMoreOne.tag = indexPath.row;
+        [btnMoreOne setBackgroundImage:[UIImage imageNamed:@"btnDetail_60.png"] forState:UIControlStateNormal];
+        [btnMoreOne addTarget:self action:@selector(btnMoreOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+
+        btnDeleteTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnDeleteTwo.frame=CGRectMake(cell.Img02.center.x-(cell.Img02.frame.size.width/2)-170, 2, 35,35);
+        //btnDeleteTwo.frame=CGRectMake(100, 45, 35,35);
+        
+        btnDeleteTwo.tag = indexPath.row;
+        
+        [btnDeleteTwo setBackgroundImage:[UIImage imageNamed:@"btnDelete_60.png"] forState:UIControlStateNormal];
+        [btnDeleteTwo addTarget:self action:@selector(btnDeleteTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+        btnMoreTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnMoreTwo.frame=CGRectMake([cell Img02].center.x-([cell Img02].frame.size.width/2)-170 , 45, 35,35);
+        btnMoreTwo.tag = indexPath.row;
+        [btnMoreTwo setBackgroundImage:[UIImage imageNamed:@"btnDetail_60.png"] forState:UIControlStateNormal];
+        [btnMoreTwo addTarget:self action:@selector(btnMoreTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    else//iphone
+    {
+        btnDeleteOne = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnDeleteOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 2, 35,35);
+        btnDeleteOne.tag = indexPath.row;
+        [btnDeleteOne setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
+        [btnDeleteOne addTarget:self action:@selector(btnDeleteOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        btnMoreOne = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnMoreOne.frame=CGRectMake([cell Img01].center.x+([cell Img01].frame.size.width/2) -50, 45, 35,35);
+        btnMoreOne.tag = indexPath.row;
+        [btnMoreOne setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
+        [btnMoreOne addTarget:self action:@selector(btnMoreOneTapped:) forControlEvents:UIControlEventTouchUpInside];
+
+        btnDeleteTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnDeleteTwo.frame=CGRectMake(cell.Img02.center.x-(cell.Img02.frame.size.width/2)-70, 2, 35,35);
+        
+        btnDeleteTwo.tag = indexPath.row;
+        
+        [btnDeleteTwo setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
+        [btnDeleteTwo addTarget:self action:@selector(btnDeleteTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+        btnMoreTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+        btnMoreTwo.frame=CGRectMake([cell Img02].center.x-([cell Img02].frame.size.width/2)-70 , 45, 35,35);
+        btnMoreTwo.tag = indexPath.row;
+        [btnMoreTwo setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
+        [btnMoreTwo addTarget:self action:@selector(btnMoreTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
     
-    btnDeleteTwo.tag = indexPath.row;
-    
-    [btnDeleteTwo setBackgroundImage:[UIImage imageNamed:@"btnDelete_40.png"] forState:UIControlStateNormal];
-    [btnDeleteTwo addTarget:self action:@selector(btnDeleteTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
-    btnMoreTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMoreTwo.frame=CGRectMake([cell Img02].center.x-([cell Img02].frame.size.width/2)-70 , 45, 35,35);
-    btnMoreTwo.tag = indexPath.row;
-    [btnMoreTwo setBackgroundImage:[UIImage imageNamed:@"btnDetail_40.png"] forState:UIControlStateNormal];
-    [btnMoreTwo addTarget:self action:@selector(btnMoreTwoTapped:) forControlEvents:UIControlEventTouchUpInside];
-   
+  
     
 
     NSArray *subArray = [[NSArray alloc]initWithArray: [TwoQuoteImageArray objectAtIndex:[indexPath row]]];
